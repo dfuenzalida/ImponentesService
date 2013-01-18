@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:aem="http://valida.aem.gob.cl" xmlns:con="http://eviware.com/soapui/config" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://valida.aem.gob.cl">
+	<wsdl:documentation>
+		Consulta de Imponentes de DIPRECA
+		WSDL - version 02/Nov/2010
+	</wsdl:documentation>
+	<wsdl:types>
+		<xsd:schema elementFormDefault="qualified" targetNamespace="http://valida.aem.gob.cl">
+			<xsd:include schemaLocation="http://valida.aem.gob.cl/documentales/AEM/sobre.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="request">
+		<wsdl:part element="aem:sobre" name="request">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="response">
+		<wsdl:part element="aem:sobre" name="response">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="ConsultaImponentesDipreca">
+		<wsdl:operation name="ConsultaImponentesDipreca">
+			<wsdl:input message="aem:request">
+			</wsdl:input>
+			<wsdl:output message="aem:response">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ConsultaImponentesDiprecaBinding" type="aem:ConsultaImponentesDipreca">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="ConsultaImponentesDipreca">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ConsultaImponentesDiprecaService">
+		<wsdl:port binding="aem:ConsultaImponentesDiprecaBinding" name="ConsultaImponentesDiprecaSoapPort">
+			<soap:address location="https://servicios.dipreca.cl/ImponentesService/services/ConsultaImponentesDiprecaSoapPort"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
